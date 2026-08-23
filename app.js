@@ -5,11 +5,12 @@ import AppError from "./utils/appError.js";
 import patientAuthRouter from "./routes/patientAuthRoutes.js";
 import caregiverRouter from "./routes/caregiverRoutes.js";
 import gameRouter from "./routes/gameRoutes.js";
+import chatRouter from "./routes/chatRoutes.js";
 
 const app = express();
 
 app.use(cors({ origin: process.env.CORS_ORIGIN?.split(",") || "*" }));
-app.use(express.json({ limit: "10kb" }));
+app.use(express.json({ limit: "50kb" }));
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -22,6 +23,7 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", patientAuthRouter);
 app.use("/api", caregiverRouter);
 app.use("/api/games", gameRouter);
+app.use("/api/chat", chatRouter);
 
 app.all("/{*splat}", (req, res, next) => {
   next(new AppError(`Route ${req.method} ${req.originalUrl} was not found`, 404));
