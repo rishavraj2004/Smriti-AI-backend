@@ -1,7 +1,8 @@
-import bcrypt from "bcryptjs";
+﻿import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import Caregiver from "../models/Caregiver.js";
 import Patient from "../models/Patient.js";
+import GameSession from "../models/GameSession.js";
 import AppError from "../utils/appError.js";
 import generateToken from "../utils/generateToken.js";
 
@@ -81,4 +82,130 @@ export const getDashboard = async (req, res, next) => {
     if (!patient) return next(new AppError("No patient is linked to this caregiver yet", 404));
     res.json({ success: true, patient: safePatient(patient) });
   } catch (error) { next(error); }
+};
+
+/**
+ * GET /api/caregiver/patient/sessions
+ * Fetch real session records of the linked patient from MongoDB.
+ */
+export const getPatientSessions = async (req, res, next) => {
+  try {
+    if (!mongoose.isObjectIdOrHexString(req.caregiverId)) {
+      return next(new AppError("Invalid authentication token", 401));
+    }
+
+    const patient = await Patient.findOne({ caregiverId: req.caregiverId });
+    if (!patient) {
+      return next(new AppError("No patient is linked to this caregiver yet", 404));
+    }
+
+    const sessions = await GameSession.find({ patientId: patient._id })
+      .sort({ createdAt: -1 })
+      .limit(50)
+      .lean();
+
+    res.json({
+      success: true,
+      patient: safePatient(patient),
+      totalSessions: sessions.length,
+      sessions: sessions.map(s => ({
+        id: s._id.toString(),
+        gameType: s.gameType,
+        difficulty: s.difficulty,
+        score: s.score,
+        accuracy: s.accuracy,
+        performanceScore: s.performanceScore,
+        responseTimeMs: s.responseTimeMs,
+        mistakes: s.mistakes,
+        correctAnswers: s.correctAnswers,
+        completed: s.completed,
+        completedAt: s.completedAt,
+      })),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * GET /api/caregiver/patient/performance
+ * Fetch aggregated cognitive domain trends and metrics of the linked patient from MongoDB.
+ */
+export const getPatientPerformance = async (req, res, next) => {
+  try {
+    if (!mongoose.isObjectIdOrHexString(req.caregiverId)) {
+      return next(new AppError("Invalid authentication token", 401));
+    }
+
+    const patient = await Patient.findOne({ caregiverId: req.caregiverId });
+    if (!patient) {
+      return next(new AppError("No patient is linked to this caregiver yet", 404));
+    }
+
+    const sessions = await GameSession.find({ patientId: patient._id })
+      .sort({ createdAt: -1 })
+      .limit(60)
+      .lean();
+
+    // Domain breakdowns
+    const domainTotals = {};
+    const domainCounts = {};
+
+    sessions.forEach(s => {
+      let key = s.gameType;
+      if (key === "math_memory") key = "mathMemory";
+      if (key === "object_recognition") key = "objectRecognition";
+      if (key === "routine_recall") key = "routineRecall";
+      if (key === "word_association") key = "wordAssociation";
+
+      domainTotals[key] = (domainTotals[key] || 0) + s.performanceScore;
+      domainCounts[key] = (domainCounts[key] || 0) + 1;
+    });
+
+    const domainScores = {
+      memory: domainCounts.memory ? Math.round(domainTotals.memory / domainCounts.memory) : null,
+      attention: domainCounts.attention ? Math.round(domainTotals.attention / domainCounts.attention) : null,
+      mathMemory: domainCounts.mathMemory ? Math.round(domainTotals.mathMemory / domainCounts.mathMemory) : null,
+      objectRecognition: domainCounts.objectRecognition ? Math.round(domainTotals.objectRecognition / domainCounts.objectRecognition) : null,
+      routineRecall: domainCounts.routineRecall ? Math.round(domainTotals.routineRecall / domainCounts.routineRecall) : null,
+      wordAssociation: domainCounts.wordAssociation ? Math.round(domainTotals.wordAssociation / domainCounts.wordAssociation) : null,
+    };
+
+    const totalGames = sessions.length;
+    const overallScore =
+      totalGames > 0
+        ? Math.round(sessions.reduce((a, b) => a + b.performanceScore, 0) / totalGames)
+        : null;
+
+    // Calculate neutral trend direction based on recent vs older half
+    let trend = "Stable";
+    if (sessions.length >= 4) {
+      const mid = Math.floor(sessions.length / 2);
+      const recentAvg = sessions.slice(0, mid).reduce((a, b) => a + b.performanceScore, 0) / mid;
+      const olderAvg = sessions.slice(mid).reduce((a, b) => a + b.performanceScore, 0) / (sessions.length - mid);
+      if (recentAvg - olderAvg >= 5) trend = "Improving";
+      else if (olderAvg - recentAvg >= 5) trend = "Needs Attention";
+      else trend = "Stable";
+    }
+
+    res.json({
+      success: true,
+      patient: safePatient(patient),
+      overallPerformance: overallScore,
+      totalGamesPlayed: totalGames,
+      trend,
+      domainScores,
+      recentSessions: sessions.slice(0, 10).map(s => ({
+        id: s._id.toString(),
+        gameType: s.gameType,
+        difficulty: s.difficulty,
+        performanceScore: s.performanceScore,
+        accuracy: s.accuracy,
+        responseTimeMs: s.responseTimeMs,
+        completedAt: s.completedAt,
+      })),
+    });
+  } catch (error) {
+    next(error);
+  }
 };
