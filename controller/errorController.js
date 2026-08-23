@@ -27,6 +27,7 @@ const handleJWTExpiredError = () =>
 
 const sendErrorDev = (err, res) => {
     res.status(err.statusCode).json({
+        success: false,
         status: err.status,
         error: err,
         message: err.message,
@@ -38,6 +39,7 @@ const sendErrorProd = (err, res) => {
     // Operational, trusted error: send message to client
     if (err.isOperational) {
         res.status(err.statusCode).json({
+            success: false,
             status: err.status,
             message: err.message
         });
@@ -49,6 +51,7 @@ const sendErrorProd = (err, res) => {
 
         // 2) Send generic message
         res.status(500).json({
+            success: false,
             status: 'error',
             message: 'Something went very wrong!'
         });
