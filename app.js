@@ -7,11 +7,13 @@ import caregiverRouter from "./routes/caregiverRoutes.js";
 import gameRouter from "./routes/gameRoutes.js";
 import chatRouter from "./routes/chatRoutes.js";
 import ttsRouter from "./routes/ttsRoutes.js";
+import memoryRouter from "./routes/memoryRoutes.js";
 
 const app = express();
 
 app.use(cors({ origin: process.env.CORS_ORIGIN?.split(",") || "*" }));
-app.use(express.json({ limit: "50kb" }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -26,6 +28,7 @@ app.use("/api", caregiverRouter);
 app.use("/api/games", gameRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/tts", ttsRouter);
+app.use("/api/memories", memoryRouter);
 
 app.all("/{*splat}", (req, res, next) => {
   next(new AppError(`Route ${req.method} ${req.originalUrl} was not found`, 404));
