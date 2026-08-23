@@ -1,14 +1,20 @@
-class AppError extends Error {
-    constructor(message, statuscode) {
-        super(message);
+import Patient from "../models/Patient.js";
 
-        this.statusCode = statuscode;
-        this.status = `${statuscode}`.startsWith('4') ? 'fail' : 'error';
-        this.isOperational = true;
+const generateRandomCode = () => {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "SMR-";
+  for (let i = 0; i < 4; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
 
-        Error.captureStackTrace(this, this.constructor);
-
-    }
+export default async function generatePairingCode() {
+  let code;
+  let exists = true;
+  while (exists) {
+    code = generateRandomCode();
+    exists = await Patient.exists({ pairingCode: code });
+  }
+  return code;
 }
-
-export default AppError;

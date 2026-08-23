@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rishavraj2004/Smriti-AI-backend#readme",
   "dependencies": {
+    "@google-cloud/text-to-speech": "^7.0.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
