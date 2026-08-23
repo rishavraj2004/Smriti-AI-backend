@@ -21,12 +21,14 @@ export const getNextGame = async (req, res, next) => {
       return next(new AppError("Patient profile not found", 404));
     }
 
-    const { type, difficulty } = req.query || {};
+    const { type, difficulty, lang, language } = req.query || {};
+    const effectiveLang = language || lang || patient.language || "en";
+
     const game = await getNextGameForPatient(
       patient._id,
       type,
       difficulty,
-      patient.language || "en"
+      effectiveLang
     );
 
     res.json({

@@ -1,218 +1,123 @@
-﻿export const OBJECT_QUESTIONS_BANK = [
-  // Easy (Difficulty 1)
+﻿export const RECOGNITION_BANK = [
   {
-    difficulty: 1,
+    symbol: "🦏",
     prompts: {
-      en: "Which item is the famous traditional Assam Bamboo Basket (Japi / Khang)?",
-      as: "কোনটো পৰম্পৰাগত অসমীয়া বাঁহৰ পাচি বা জাপি?",
-      hi: "कौन सी वस्तु पारंपरिक असम बांस की टोकरी (जापी / खांग) है?",
-      bn: "কোনটি ঐতিহ্যবাহী আসাম বাঁশের ঝুড়ি (জাপি / খাং)?",
-      mn: "Which item is the traditional Assam Bamboo Basket?",
-      mz: "Khawi nge Assam mau bawm (Japi) chu?",
+      en: "Which animal is the famous state animal of Assam found in Kaziranga?",
+      as: "কাজিৰঙাত পোৱা অসমৰ প্ৰখ্যাত ৰাজ্যিক প্ৰাণীটো কি?",
+      hi: "काजीरंगा में पाया जाने वाला असम का प्रसिद्ध राज्य पशु कौन सा है?",
+      bn: "কাজিবাঙায় পাওয়া আসামের বিখ্যাত রাষ্ট্রীয় পশু কোনটি?",
+      mn: "Which is the famous animal of Kaziranga?",
+      mz: "Kaziranga ramhnuaia ramsa lar tak chu eng nge?",
     },
-    correctAnswer: "Bamboo Basket",
-    options: [
-      { label: "A", emoji: "🎋", name: "Bamboo Basket" },
-      { label: "B", emoji: "🏺", name: "Clay Pot" },
-      { label: "C", emoji: "🪑", name: "Wooden Chair" },
+    correct: { en: "One-Horned Rhino", as: "এশিঙীয়া গঁড়", hi: "एक सींग वाला गैंडा", bn: "একশৃঙ্গ গণ্ডার", mn: "One-Horned Rhino", mz: "Samak Ki-khat" },
+    distractors: [
+      { en: "Royal Bengal Tiger", as: "ঢেঁকীয়াপতীয়া বাঘ", hi: "रॉयल बंगाल टाइगर", bn: "রয়েল বেঙ্গল টাইগার", mn: "Tiger", mz: "Sakei" },
+      { en: "Wild Water Buffalo", as: "বনৰীয়া ম'হ", hi: "जंगली भैंस", bn: "বুনো মহিষ", mn: "Buffalo", mz: "Ramsial" },
+      { en: "Golden Langur", as: "সোণালী বান্দৰ", hi: "गोल्डन लंगूर", bn: "সোনালী বানর", mn: "Langur", mz: "Zawng" },
     ],
-    hints: {
-      en: "Look for the woven green and yellow bamboo craft!",
-      as: "সেউজীয়া আৰু হালধীয়া বাঁহৰ সজা বস্তুটো চাওক!",
-      hi: "हरे और पीले बांस से बुनी वस्तु को देखें!",
-      bn: "সবুজ এবং হলুদ বাঁশের তৈরি জিনিসটি দেখুন!",
-      mn: "Look for the woven bamboo craft!",
-      mz: "Mau a tah hring leh eng kha en rawh!",
-    },
   },
   {
-    difficulty: 1,
+    symbol: "🥁",
     prompts: {
-      en: "Which fruit is the famous North Eastern Starfruit (Kordoi)?",
-      as: "কোনটো উত্তৰ-পূৰ্বাঞ্চলৰ বিখ্যাত ফল কৰ্দৈ?",
-      hi: "पूर्वोत्तर का प्रसिद्ध फल अमरख (कमरख) कौन सा है?",
-      bn: "কোনটি উত্তর-পূর্বাঞ্চলের বিখ্যাত কামরাঙা ফল?",
-      mn: "Which fruit is the famous Starfruit?",
-      mz: "Khawi nge North East thei hmingthang Starfruit chu?",
-    },
-    correctAnswer: "Starfruit",
-    options: [
-      { label: "A", emoji: "🍎", name: "Red Apple" },
-      { label: "B", emoji: "⭐", name: "Starfruit" },
-      { label: "C", emoji: "🍌", name: "Banana" },
-    ],
-    hints: {
-      en: "It has five star-shaped ridges when sliced!",
-      as: "কাটিলে তৰাৰ নিচিনা পাঁচটা কোণ ওলায়!",
-      hi: "काटने पर इसके तारे जैसे पांच कोने दिखते हैं!",
-      bn: "কাটলে তারার মতো খাঁজ দেখা যায়!",
-      mn: "It looks like a star when sliced!",
-      mz: "A zai hian arsi ang a ni!",
-    },
-  },
-  {
-    difficulty: 1,
-    prompts: {
-      en: "Which musical instrument is played during Bihu celebrations?",
-      as: "বিহু উৎসৱত বজোৱা বাদ্যযন্ত্ৰ কোনটো?",
-      hi: "बिहू उत्सव के दौरान कौन सा वाद्य यंत्र बजाया जाता है?",
-      bn: "বিহু উৎসবের সময় কোন বাদ্যযন্ত্রটি বাজানো হয়?",
+      en: "Which traditional percussion instrument is played during Bihu celebrations?",
+      as: "বিহু উৎসৱৰ সময়ত কোনটো পৰম্পৰাগত বাদ্যযন্ত্ৰ বজোৱা হয়?",
+      hi: "बिहू उत्सव के दौरान कौन सा पारंपरिक वाद्य यंत्र बजाया जाता है?",
+      bn: "বিহু উৎসবের সময় কোন ঐতিহ্যবাহী বাদ্যযন্ত্র বাজানো হয়?",
       mn: "Which instrument is played during Bihu?",
-      mz: "Bihu kut laiin eng rimawi hmanraw nge an tum?",
+      mz: "Bihu kut laiin eng rimawi hmanrua nge an tum?",
     },
-    correctAnswer: "Bihu Dhol",
-    options: [
-      { label: "A", emoji: "🥁", name: "Bihu Dhol" },
-      { label: "B", emoji: "🎸", name: "Guitar" },
-      { label: "C", emoji: "🎺", name: "Trumpet" },
+    correct: { en: "Bihu Dhol", as: "বিহু ঢোল", hi: "बिहू ढोल", bn: "বিহু ঢোল", mn: "Bihu Dhol", mz: "Bihu Khuang" },
+    distractors: [
+      { en: "Harmonium", as: "হাৰমনিয়াম", hi: "हारमोनियम", bn: "হারমোনিয়াম", mn: "Harmonium", mz: "Harmonium" },
+      { en: "Bamboo Flute", as: "বাঁহৰ বাঁহী", hi: "बाँसुरी", bn: "বাঁশের বাঁশি", mn: "Flute", mz: "Phulit" },
+      { en: "Violin", as: "বেহেলা", hi: "वायलिन", bn: "বেহালা", mn: "Violin", mz: "Violin" },
     ],
-    hints: {
-      en: "It is a double-sided wooden drum played with sticks!",
-      as: "মাৰিৰে বজোৱা দুয়োফালে চামৰা থকা কাঠৰ ঢোল!",
-      hi: "यह लकड़ी का दोहरा ढोल है जिसे डंडियों से बजाते हैं!",
-      bn: "এটি দুই পিঠে চামড়া লাগানো কাঠের ঢাক যা কাঠি দিয়ে বাজানো হয়!",
-      mn: "It is a double-sided wooden drum!",
-      mz: "Khuang a hmanraw vuak chi a ni!",
-    },
-  },
-
-  // Medium (Difficulty 2)
-  {
-    difficulty: 2,
-    prompts: {
-      en: "Which item is the sacred Assam handwoven cotton towel (Gamosa)?",
-      as: "কোনখন অসমৰ সন্মানীয় পৰম্পৰাগত কাপোৰ গামোচা?",
-      hi: "कौन सा असम का पवित्र हाथ से बुना तौलिया (गमोसा) है?",
-      bn: "কোনটি আসামের পবিত্র হস্তচালিত গামোচা?",
-      mn: "Which item is the sacred Assam Gamosa?",
-      mz: "Khawi nge Assam puan thianghlim Gamosa chu?",
-    },
-    correctAnswer: "Gamosa",
-    options: [
-      { label: "A", emoji: "🧣", name: "Gamosa" },
-      { label: "B", emoji: "🧢", name: "Baseball Cap" },
-      { label: "C", emoji: "🧤", name: "Winter Gloves" },
-      { label: "D", emoji: "🧦", name: "Cotton Socks" },
-    ],
-    hints: {
-      en: "White cotton cloth with red woven floral borders!",
-      as: "ৰঙা ফুল কটা বগা কপাহী ফুলাম কাপোৰ!",
-      hi: "लाल फूलों की किनारी वाला सफेद सूती कपड़ा!",
-      bn: "লাল ফুলের নকশা আঁকা সাদা সুতির কাপড়!",
-      mn: "White cloth with red border patterns!",
-      mz: "Puan var a sen a par awm kha a ni!",
-    },
   },
   {
-    difficulty: 2,
+    symbol: "🍵",
     prompts: {
-      en: "Which wild animal is the state pride of Kaziranga, Assam?",
-      as: "কাজিৰঙা ৰাষ্ট্ৰীয় উদ্যানৰ গৌৰৱ কোনটো বন্যপ্ৰাণী?",
-      hi: "काजीरंगा राष्ट्रीय उद्यान का गौरव कौन सा वन्यजीव है?",
-      bn: "কাজিরাঙা জাতীয় উদ্যানের গর্ব কোন বন্যপ্রাণী?",
-      mn: "Which wild animal is the state pride of Kaziranga?",
-      mz: "Kaziranga chhuanna ramsa khawi nge?",
+      en: "What refreshing drink is harvested in the rolling tea gardens across the Brahmaputra Valley?",
+      as: "ব্ৰহ্মপুত্ৰ উপত্যকাৰ সেউজীয়া বাগিচাত কোনটো সতেজ পানীয় উৎপাদন কৰা হয়?",
+      hi: "ब्रह्मपुत्र घाटी के चाय बागानों में कौन सा पेय पदार्थ उगाया जाता है?",
+      bn: "ব্রহ্মপুত্র উপত্যকার সবুজ বাগানে কোন সতেজ পানীয় উৎপাদিত হয়?",
+      mn: "What drink is harvested in tea gardens?",
+      mz: "Thingpui huan atanga lak chhuah in tur chu eng nge?",
     },
-    correctAnswer: "One-Horned Rhino",
-    options: [
-      { label: "A", emoji: "🦏", name: "One-Horned Rhino" },
-      { label: "B", emoji: "🦁", name: "African Lion" },
-      { label: "C", emoji: "🦒", name: "Tall Giraffe" },
-      { label: "D", emoji: "🦓", name: "Striped Zebra" },
+    correct: { en: "Assam Orthodox Tea", as: "অসমৰ অৰ্থডক্স চাহ", hi: "असमिया चाय", bn: "আসাম চা", mn: "Assam Tea", mz: "Assam Thingpui" },
+    distractors: [
+      { en: "Coconut Water", as: "নাৰিকলৰ পানী", hi: "नारियल पानी", bn: "ডাবের জল", mn: "Coconut Water", mz: "Durtui" },
+      { en: "Sugarcane Juice", as: "কুঁহিয়াৰৰ ৰস", hi: "गन्ने का रस", bn: "আখের রস", mn: "Sugarcane Juice", mz: "Futhlum Tui" },
+      { en: "Coffee Bean", as: "কফি গুটি", hi: "कॉफी", bn: "কফি বিন", mn: "Coffee", mz: "Kawphi" },
     ],
-    hints: {
-      en: "It has a single distinct horn on its snout!",
-      as: "ইয়াৰ নাকৰ ওপৰত এটা ডাঙৰ খড়্গ থাকে!",
-      hi: "इसकी नाक पर एक सींग होता है!",
-      bn: "এর নাকের ওপর একটি খড়্গ থাকে!",
-      mn: "It has a single horn on its snout!",
-      mz: "A hnar zawnah ki pakhat a nei!",
-    },
-  },
-
-  // Hard (Difficulty 3)
-  {
-    difficulty: 3,
-    prompts: {
-      en: "Which traditional vessel is used for offering betel nut (Tamul-Paan) in Assamese culture?",
-      as: "অসমীয়া সংস্কৃতিত তামোল-পাণ যাচিবলৈ কি ব্যৱহাৰ কৰা হয়?",
-      hi: "असमिया संस्कृति में ताम्बूल-पान भेंट करने के लिए किस पारंपरिक बर्तन का उपयोग होता है?",
-      bn: "আসামের সংস্কৃতিতে পান-সুপারি পরিবেশন করার জন্য কোন পাত্রটি ব্যবহৃত হয়?",
-      mn: "Which vessel is used for offering betel nut in Assamese culture?",
-      mz: "Assam hnam zia a kuhva hlanna hmanrua khawi nge?",
-    },
-    correctAnswer: "Xorai Vessel",
-    options: [
-      { label: "A", emoji: "🏆", name: "Xorai Vessel" },
-      { label: "B", emoji: "🫖", name: "Glass Teapot" },
-      { label: "C", emoji: "🍽️", name: "Dinner Plate" },
-      { label: "D", emoji: "🥛", name: "Water Glass" },
-    ],
-    hints: {
-      en: "An elevated brass or bell-metal stand with a dome cover!",
-      as: "কাঁহ বা পিতলৰ খুৰা থকা ঢাকনিযুক্ত শৰাই!",
-      hi: "पीतल या कांसे का ऊंचे स्टैंड वाला ढक्कनदार बर्तन!",
-      bn: "কাঁসা বা পিতলের তৈরি উঁচু পায়া বিশিষ্ট ঢাকনাযুক্ত পাত্র!",
-      mn: "An elevated brass stand vessel!",
-      mz: "Dar a siam dawhkan sang nei thleng a ni!",
-    },
   },
   {
-    difficulty: 3,
+    symbol: "🎋",
     prompts: {
-      en: "Which craft is famous from the river island Majuli?",
-      as: "নদীদ্বীপ মাজুলীৰ কোনটো পৰম্পৰাগত কলা বিখ্যাত?",
-      hi: "नदी द्वीप माजुली की कौन सी पारंपरिक कला प्रसिद्ध है?",
-      bn: "নদী দ্বীপ মাজুলীর কোন ঐতিহ্যবাহী শিল্প বিখ্যাত?",
-      mn: "Which craft is famous from Majuli river island?",
-      mz: "Majuli thliarkar a kut chhuak hmingthang khawi nge?",
+      en: "Which sturdy natural green grass is crafted into baskets, furniture, and walking sticks?",
+      as: "কোনটো প্ৰাকৃতিক গছৰ পৰা পাচি, আচবাব আৰু লাখুটি তৈয়াৰ কৰা হয়?",
+      hi: "किस प्राकृतिक सामग्री से टोकरियाँ, फर्नीचर और लाठी बनाई जाती है?",
+      bn: "কোন প্রাকৃতিক উপাদান দিয়ে ঝুড়ি, আসবাবপত্র ও লাঠি তৈরি হয়?",
+      mn: "Which plant is used to make baskets and furniture?",
+      mz: "Eng hnahthawh hmanrua nge bawm leh thutthleng siam nan an hman?",
     },
-    correctAnswer: "Traditional Mukha Mask",
-    options: [
-      { label: "A", emoji: "🎭", name: "Traditional Mukha Mask" },
-      { label: "B", emoji: "🎨", name: "Oil Canvas" },
-      { label: "C", emoji: "🪁", name: "Paper Kite" },
-      { label: "D", emoji: "🧸", name: "Plush Toy" },
+    correct: { en: "Assam Bamboo (Banh)", as: "জাতি বাঁহ", hi: "बाँस", bn: "বাঁশ", mn: "Bamboo", mz: "Mau" },
+    distractors: [
+      { en: "Oak Wood", as: "ওক কাঠ", hi: "ओक की लकड़ी", bn: "ওক কাঠ", mn: "Oak", mz: "Oak Thing" },
+      { en: "Pine Tree", as: "সৰল গছ", hi: "चीड़ का पेड़", bn: "পাইন গাছ", mn: "Pine", mz: "Far Thing" },
+      { en: "Palm Frond", as: "তাল গছ", hi: "ताड़ का पत्ता", bn: "তাল পাতা", mn: "Palm", mz: "Tum" },
     ],
-    hints: {
-      en: "Made from bamboo, clay, and cloth for Bhaona performances!",
-      as: "ভাওনাৰ বাবে বাঁহ, মাটি আৰু কাপোৰেৰে সজা মুখা!",
-      hi: "भाओना अभिनय के लिए बांस और मिट्टी से बना मुखौटा!",
-      bn: "ভাওনা নাটকের জন্য বাঁশ ও মাটি দিয়ে তৈরি মুখোশ!",
-      mn: "Masks made for theatrical performances!",
-      mz: "Lemchan entirna a hmai tuamna lem!",
-    },
   },
 ];
 
+const TITLES = {
+  as: "বস্তু আৰু ঐতিহ্য পৰিচিতি",
+  hi: "वस्तु और सांस्कृतिक पहचान",
+  bn: "জিনিস ও ঐতিহ্য চেনা",
+  mn: "Object Recognition",
+  mz: "Thil Hriatchhuah",
+  en: "Cultural Object Recognition",
+};
+
+const INSTRUCTIONS = {
+  as: "প্ৰশ্নটো পঢ়ি শুদ্ধ পৰম্পৰাগত বস্তুটো বাছনি কৰক।",
+  hi: "प्रश्न पढ़कर सही पारंपरिक वस्तु का चयन कीजिए।",
+  bn: "প্রশ্নটি পড়ে সঠিক ঐতিহ্যবাহী বস্তুটি নির্বাচন করুন।",
+  mn: "Read the prompt and select the matching cultural object.",
+  mz: "Zawhna chhiar la, a dik ber thlang rawh.",
+  en: "Read the cultural prompt and select the matching object option.",
+};
+
 export const generateObjectRecognitionGame = (difficulty = 1, lang = "en") => {
-  const qCounts = { 1: 3, 2: 4, 3: 5 };
+  const qCounts = { 1: 3, 2: 4, 3: 4 };
   const targetCount = qCounts[difficulty] || 3;
 
-  const pool = OBJECT_QUESTIONS_BANK.filter(q => q.difficulty <= difficulty);
-  const selected = [...pool]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, targetCount)
-    .map((q, idx) => ({
+  const shuffledBank = [...RECOGNITION_BANK].sort(() => Math.random() - 0.5);
+  const selected = shuffledBank.slice(0, targetCount).map((item, idx) => {
+    const correctName = item.correct[lang] || item.correct.en;
+    const distractorNames = item.distractors.map(d => d[lang] || d.en);
+    const allOptions = [correctName, ...distractorNames].sort(() => Math.random() - 0.5);
+
+    return {
       id: idx + 1,
-      prompt: q.prompts[lang] || q.prompts.en,
-      correctAnswer: q.correctAnswer,
-      options: [...q.options].sort(() => Math.random() - 0.5),
-      hint: q.hints[lang] || q.hints.en,
-    }));
+      symbol: item.symbol,
+      prompt: item.prompts[lang] || item.prompts.en,
+      correctAnswer: correctName,
+      options: allOptions,
+    };
+  });
 
   return {
     gameType: "object_recognition",
     difficulty,
-    title: "Object & Cultural Recognition",
-    instructions: "Look closely at the question and identify the traditional object.",
+    title: TITLES[lang] || TITLES.en,
+    instructions: INSTRUCTIONS[lang] || INSTRUCTIONS.en,
     content: {
       questionsCount: selected.length,
       questions: selected,
     },
     settings: {
-      timeLimitMs: selected.length * 15000,
-      expectedTimeMs: selected.length * 5000,
+      timeLimitMs: selected.length * 20000,
+      expectedTimeMs: selected.length * 8000,
     },
   };
 };
